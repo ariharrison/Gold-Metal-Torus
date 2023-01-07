@@ -18,7 +18,29 @@
       renderer.setSize(window.innerWidth, window.innerHeight);
       document.body.appendChild(renderer.domElement);
 
-    
+      // Create the gold metal material
+      const goldMetalMaterial = new THREE.MeshStandardMaterial({
+        color: 0xffd700,
+        metalness: 1,
+        roughness: 0.3
+      });
+
+      // Create the torus geometry and mesh
+      const torusGeometry = new THREE.TorusBufferGeometry(1, 0.4, 16, 100);
+      const torus = new THREE.Mesh(torusGeometry, goldMetalMaterial);
+      scene.add(torus);
+
+      // Add some light to the scene
+      const light1 = new THREE.DirectionalLight(0xffffff, 1);
+      light1.position.set(5, 5, 5);
+      scene.add(light1);
+      const light2 = new THREE.DirectionalLight(0xffffff, 1);
+      light2.position.set(-1, -1, -1);
+      scene.add(light2);
+      const ambientLight = new THREE.AmbientLight(0x404040);
+      scene.add(ambientLight);
+
+
       }
       animate();
     </script>
